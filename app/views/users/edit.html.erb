@@ -1,0 +1,32 @@
+<h1>Edit User</h1>
+<%#= form_with(model: @user, url:edit_user_path, method:"PATCH") do |form| %>
+<%= form_with model: @user do |form| %>
+<p>Railsy-er forms with #form_with</p>
+   
+    <div>
+        <%= form.label :username %>
+        <%= form.text_field :username %>
+        <%= @user.errors.full_messages_for(:username).each do |msg|%>
+            <p><%= msg %></p>
+        <% end %>
+    </div>
+
+    <div>
+        <%= form.label :password %>
+        <%= form.password_field :password %>
+        <%= @user.errors.full_messages_for(:password).each do |msg|%>
+            <p><%= msg %></p>
+        <% end %>
+    </div>
+
+    <div>
+        <%= form.label :email %>
+        <%= form.email_field :email, {placeholder:"example@example.com"} %>
+        <%= @user.errors.full_messages_for(:email).each do |msg|%>
+            <p><%= msg %></p>
+        <% end %>
+    </div>
+
+    <%= form.submit %>
+
+<% end %>

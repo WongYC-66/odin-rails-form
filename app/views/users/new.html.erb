@@ -1,0 +1,72 @@
+<h1>Create New User</h1>
+
+<%# <p> raw html form </p> %>
+<%# <form action="/users" method="POST" accept-charset="UTF-8">
+
+    <input type="hidden" name="authenticity_token" value="abc">
+
+    <div>
+        <label for="username">username</label>
+        <input type="text" name="username" id="username" value="admin">
+    </div>
+
+    <div>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password">
+    </div>
+
+    <div>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" value="admin@example.com">
+    </div>
+
+     <div>
+        <input type="submit">
+    </div>
+
+</form> %>
+
+<% if false %>
+<p>Railsy forms with #form_tag</p>
+    <%= form_tag("/users", method: "POST") do %>
+        
+        <div>
+            <%= label_tag(:username, "Username") %>
+            <%= text_field_tag(:username) %>
+        </div>
+
+        <div>
+            <%= label_tag(:password, "Password") %>
+            <%= password_field_tag(:password) %>
+        <div>
+            <%= label_tag(:email, "Email") %>
+            <%= email_field_tag(:email) %>
+        </div>
+
+        <%= submit_tag("Submit") %>
+
+    <% end %>
+<% end %>
+
+
+<%= form_with model: @user do |form| %>
+<p>Railsy-er forms with #form_with</p>
+        
+    <div>
+        <%= form.label "Your username here" %>
+        <%= form.text_field :username, {value:"admin"} %>
+    </div>
+
+    <div>
+        <%= form.label :password %>
+        <%= form.password_field :password %>
+    </div>
+
+    <div>
+        <%= form.label :email %>
+        <%= form.email_field :email, {placeholder:"example@example.com"} %>
+    </div>
+
+    <%= form.submit %>
+
+<% end %>
